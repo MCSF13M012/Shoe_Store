@@ -1,0 +1,84 @@
+﻿@model MvcApplication1.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+
+
+<div id="templatemo_content_wrapper">
+
+    <div id="templatmeo_sidebar">
+
+
+
+
+        <div class="sidebar_section">
+
+            <h2>Categories</h2>
+
+            <div class="sidebar_section_content">
+
+                <ul class="categories_list">
+                    <li><a href="/Home/Female">Female Shoes</a></li>
+                    <li><a href="/Home/Male">Male Shoes</a></li>
+                    <li><a href="/Home/Kids">Kids Shoes</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div> <!-- end of templatemo_slider -->
+
+    <div id="templatemo_content">
+
+
+
+        <div class="content_section">
+
+
+
+            <p class="message-success">@ViewBag.StatusMessage</p>
+
+            <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+
+            @if (ViewBag.HasLocalPassword)
+            {
+                @Html.Partial("_ChangePasswordPartial")
+            }
+            else
+            {
+                @Html.Partial("_SetPasswordPartial")
+            }
+
+            <section id="externalLogins">
+                @Html.Action("RemoveExternalLogins")
+
+                <h3>Add an external login</h3>
+                @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+
+
+
+
+
+
+
+
+            <div class="cleaner"></div>
+
+        </div>
+
+    </div> <!-- end of templatemo_content -->
+
+    <div class="cleaner"></div>
+
+</div> <!-- end of templatemo_content_wrapper -->
+<div id="templatemo_content_wrapper_bottom"></div>
+
+
+

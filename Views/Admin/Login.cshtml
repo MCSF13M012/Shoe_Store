@@ -1,0 +1,87 @@
+﻿@model MvcApplication1.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div id="templatemo_content_wrapper">
+
+    <div id="templatmeo_sidebar">
+
+
+
+
+        <div class="sidebar_section">
+
+            <h2>Categories</h2>
+
+            <div class="sidebar_section_content">
+
+                <ul class="categories_list">
+                    <li><a href="/Home/Female">Female Shoes</a></li>
+                    <li><a href="/Home/Male">Male Shoes</a></li>
+                    <li><a href="/Home/Kids">Kids Shoes</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div> <!-- end of templatemo_slider -->
+
+    <div id="templatemo_content">
+
+
+
+        <div class="content_section">
+
+            <h2>Signing Up Form</h2>
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Log in Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ol>
+        <input type="submit" value="Log in" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Register", "Signup") if you don't have an account.
+    </p>
+}
+</section>
+
+
+
+
+
+            <div class="cleaner"></div>
+
+        </div>
+
+    </div> <!-- end of templatemo_content -->
+
+    <div class="cleaner"></div>
+
+</div> <!-- end of templatemo_content_wrapper -->
+<div id="templatemo_content_wrapper_bottom"></div>
+
+
